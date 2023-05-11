@@ -4,6 +4,7 @@ import com.example.springdatatest.dto.ProductInput;
 import com.example.springdatatest.entity.Product;
 import com.example.springdatatest.service.ProductService;
 import com.example.springdatatest.service.ProductServiceImpl;
+import com.example.springdatatest.specification.ProductSpecification;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,5 +42,20 @@ public class ProductController {
     public String deleteProductById(@PathVariable("id") Long id) {
         productService.deleteProductById(id);
         return "Product delete";
+    }
+
+    @PostMapping("/less")
+    public List<Product> getProductsLessValue(@RequestBody Integer value) {
+        return productService.findProductsLessValue(value);
+    }
+
+    @PostMapping("/more")
+    public List<Product> getProductsMoreValue(@RequestBody Integer value) {
+        return productService.findProductsMoreValue(value);
+    }
+
+    @PostMapping("/range")
+    public List<Product> getProductsInTheRange(@RequestBody List<Integer> values) {
+        return productService.findProductsInTheRangeValues(values.get(0), values.get(1));
     }
 }

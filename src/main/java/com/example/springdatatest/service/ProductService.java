@@ -9,4 +9,7 @@ public interface ProductService {
     List<Product> findAllProduct();
     Long saveOrUpdateProduct(Product product);
     void deleteProductById(Long id);
+    List<Product> findProductsLessValue(Integer value);
+    List<Product> findProductsMoreValue(Integer value);
+    List<Product> findProductsInTheRangeValues(Integer minValue, Integer maxValue);
 }
